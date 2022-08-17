@@ -2,25 +2,31 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NewsService {
-
-  api_key = 'your api key';
-  constructor(private http: HttpClient) { }
-
+  api_key = 'ed50e7fad21f46eabcd5cfe40ccb606a';
+  constructor(private http: HttpClient) {}
 
   initSources() {
-    return this.http.get('https://newsapi.org/v2/sources?language=en&apiKey=' + this.api_key);
+    return this.http.get(
+      'https://newsapi.org/v2/sources?language=en&apiKey=' + this.api_key
+    );
   }
 
-
   initArticles() {
-    return this.http.get('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=' + this.api_key);
+    return this.http.get(
+      'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=' +
+        this.api_key
+    );
   }
 
   getArticlesByID(source: String) {
-    return this.http.get('https://newsapi.org/v2/top-headlines?sources=' + source + '&apiKey=' + this.api_key);
+    return this.http.get(
+      'https://newsapi.org/v2/top-headlines?sources=' +
+        source +
+        '&apiKey=' +
+        this.api_key
+    );
   }
-
 }
